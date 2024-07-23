@@ -3,7 +3,7 @@ kind: Rollout
 metadata:
   name: hello-world
 spec:
-  replicas: 5
+  replicas: 1
   strategy:
     canary:
       analysis:
