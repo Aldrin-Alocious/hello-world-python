@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AnalysisTemplate
+metadata:
+  name: latency
+spec:
+  args:
+  - name: service-name
+  metrics:
+  - name: latency
+    interval: 10s
+    failureCondition: result >= 30
+    failureLimit: 2
+    provider:
+      web:
+        url: http://{{ args.service-name }}/health
+        jsonPath: "{$.latency}"
