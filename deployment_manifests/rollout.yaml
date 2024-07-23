@@ -6,10 +6,23 @@ spec:
   replicas: 5
   strategy:
     canary:
+      analysis:
+        templates:
+        - templateName: error-rate
+        - templateName: latency
+        startingStep: 1
+        args:
+        - name: service-name
+          value: metrics-sample.default.svc.cluster.local
       steps:
-      - setWeight: 50
+      - setWeight: 10
       - pause: {duration: 20}
+      - setWeight: 50
+      - pause: {duration: 40}
+      - setWeight: 70
+      - pause: {duration: 60}
       - setWeight: 100
+  revisionHistoryLimit: 2
   selector:
     matchLabels:
       app: hello-world
