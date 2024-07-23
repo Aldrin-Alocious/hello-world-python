@@ -1,18 +1,18 @@
-# apiVersion: apps/v1
-# kind: Deployment
-# metadata:
-#   name: hello-world
-# spec:
-#   selector:
-#     matchLabels:
-#       app: hello-world
-#   template:
-#     metadata:
-#       labels:
-#         app: hello-world
-#     spec:
-#       containers:
-#       - name: hello-world
-#         image: us-central1-docker.pkg.dev/sadaindia-tvm-poc-de/demo-repo/helloworld:v1
-#         ports:
-#         - containerPort: 8080
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-world
+spec:
+  selector:
+    matchLabels:
+      app: hello-world
+  template:
+    metadata:
+      labels:
+        app: hello-world
+    spec:
+      containers:
+      - name: hello-world
+        image: us-central1-docker.pkg.dev/sadaindia-tvm-poc-de/demo-repo/helloworld:v1
+        ports:
+        - containerPort: 8080
